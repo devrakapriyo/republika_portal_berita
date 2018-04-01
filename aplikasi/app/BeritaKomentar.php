@@ -23,9 +23,9 @@ class BeritaKomentar extends Model
         if($count > 0)
         {
             $data = [];
-            foreach (BeritaKomentar::select('nama_lengkap')->join('users', 'tb_berita_komentar.users_id', '=', 'users.id')->where('berita_id', $id)->orderBy('tb_berita_komentar.id', 'desc')->get() as $items)
+            foreach (BeritaKomentar::select('users_id')->where('berita_id', $id)->orderBy('id', 'desc')->get() as $items)
             {
-                $data = $items->nama_lengkap;
+                $data = User::select('nama_lengkap')->where('id', $items->users_id)->first()->nama_lengkap;
             }
 
             return $data;

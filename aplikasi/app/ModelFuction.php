@@ -84,4 +84,54 @@ class ModelFuction extends Model
         }
         return $ip;
     }
+
+    public static function formatDateTimeIndo($date_time)
+    {
+        $arr_date_time = explode(" ", $date_time);
+        $date = $arr_date_time[0];
+        $time = $arr_date_time[1];
+
+        $arr_date = explode("-", $date);
+        $bulan = $arr_date[1];
+        $hasil_bulan = null;
+        if($bulan == 01)
+        {
+            $hasil_bulan = "januari";
+        }else if($bulan == 02)
+        {
+            $hasil_bulan = "februari";
+        }else if($bulan == 03)
+        {
+            $hasil_bulan = "maret";
+        }else if($bulan == 04)
+        {
+            $hasil_bulan = "april";
+        }else if($bulan == 05)
+        {
+            $hasil_bulan = "mei";
+        }else if($bulan == 06)
+        {
+            $hasil_bulan = "juni";
+        }else if($bulan == 07)
+        {
+            $hasil_bulan = "juli";
+        }else if($bulan == 07)
+        {
+            $hasil_bulan = "agustus";
+        }else if($bulan == 07)
+        {
+            $hasil_bulan = "september";
+        }else if($bulan == 10)
+        {
+            $hasil_bulan = "oktober";
+        }else if($bulan == 11)
+        {
+            $hasil_bulan = "november";
+        }else if($bulan == 12)
+        {
+            $hasil_bulan = "desember";
+        }
+
+         return $arr_date[2].", ".$hasil_bulan." ".$arr_date[0]." Jam ".$time;
+    }
 }

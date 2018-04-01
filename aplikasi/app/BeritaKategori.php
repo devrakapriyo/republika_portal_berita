@@ -26,6 +26,7 @@ class BeritaKategori extends Model
         return BeritaKategori::select('kategori', 'id')
             ->where('is_deleted', 'N')
             ->orderBy('created_at', 'desc')
+            ->take(5)
             ->get();
     }
 }

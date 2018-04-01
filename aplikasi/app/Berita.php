@@ -37,6 +37,7 @@ class Berita extends Model
     public static function getBeritaPopuler()
     {
         return Berita::orderBy('viewer', 'desc')
+            ->take(3)
             ->get();
     }
 
@@ -59,5 +60,22 @@ class Berita extends Model
             ->where('is_deleted', "N")
             ->orderBy('created_at', 'desc')
             ->paginate($limit);
+    }
+
+    public static function getCariKategoriBerita($kategori_id, $judul)
+    {
+        if($judul == "null")
+        {
+            return Berita::select('judul', 'seo', 'gambar', 'teks', 'created_by', 'created_at')
+                ->where('kategori_id', $kategori_id)
+                ->where('is_deleted', "N")
+                ->paginate(25);
+        }else{
+            return Berita::select('judul', 'seo', 'gambar', 'teks', 'created_by', 'created_at')
+                ->where('kategori_id', $kategori_id)
+                ->where('judul', 'like', '%'.$judul.'%')
+                ->where('is_deleted', "N")
+                ->paginate(25);
+        }
     }
 }

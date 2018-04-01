@@ -40,4 +40,5 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('/berita/kategori/{id}', 'FrontController@beritaKategori');
     Route::post('/berita/komentar/{id}', 'FrontController@beritaKomentarId');
     Route::get('/berita/respon/{id}/{perasaan}', 'FrontController@beritaRespon');
+    Route::get('/berita/cari/{kategori_id}/{judul}', 'FrontController@beritaCari');
 });

@@ -115,4 +115,10 @@ class FrontController extends Controller
             ]);
         }
     }
+
+    public function beritaCari($kategori_id, $judul)
+    {
+        $berita = Berita::getCariKategoriBerita($kategori_id, $judul);
+        return view('front.berita.cari', compact('berita', 'kategori_id', 'judul'));
+    }
 }
